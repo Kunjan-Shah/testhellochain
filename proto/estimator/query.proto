@@ -1,0 +1,115 @@
+syntax = "proto3";
+package testhellochain.estimator;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "estimator/params.proto";
+import "estimator/api_hits.proto";
+import "estimator/api_data.proto";
+import "estimator/api_count_map.proto";
+// this line is used by starport scaffolding # 1
+
+option go_package = "testhellochain/x/estimator/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/testhellochain/estimator/params";
+  }
+  // Queries a ApiHits by id.
+	rpc ApiHits(QueryGetApiHitsRequest) returns (QueryGetApiHitsResponse) {
+		option (google.api.http).get = "/testhellochain/estimator/api_hits/{id}";
+	}
+
+	// Queries a list of ApiHits items.
+	rpc ApiHitsAll(QueryAllApiHitsRequest) returns (QueryAllApiHitsResponse) {
+		option (google.api.http).get = "/testhellochain/estimator/api_hits";
+	}
+
+// Queries a ApiData by id.
+	rpc ApiData(QueryGetApiDataRequest) returns (QueryGetApiDataResponse) {
+		option (google.api.http).get = "/testhellochain/estimator/api_data/{id}";
+	}
+
+	// Queries a list of ApiData items.
+	rpc ApiDataAll(QueryAllApiDataRequest) returns (QueryAllApiDataResponse) {
+		option (google.api.http).get = "/testhellochain/estimator/api_data";
+	}
+
+// Queries a ApiCountMap by index.
+	rpc ApiCountMap(QueryGetApiCountMapRequest) returns (QueryGetApiCountMapResponse) {
+		option (google.api.http).get = "/testhellochain/estimator/api_count_map/{creator}";
+	}
+
+	// Queries a list of ApiCountMap items.
+	rpc ApiCountMapAll(QueryAllApiCountMapRequest) returns (QueryAllApiCountMapResponse) {
+		option (google.api.http).get = "/testhellochain/estimator/api_count_map";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetApiHitsRequest {
+	uint64 id = 1;
+}
+
+message QueryGetApiHitsResponse {
+	ApiHits ApiHits = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllApiHitsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllApiHitsResponse {
+	repeated ApiHits ApiHits = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetApiDataRequest {
+	uint64 id = 1;
+}
+
+message QueryGetApiDataResponse {
+	ApiData ApiData = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllApiDataRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllApiDataResponse {
+	repeated ApiData ApiData = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetApiCountMapRequest {
+	  string creator = 1;
+
+}
+
+message QueryGetApiCountMapResponse {
+	ApiCountMap apiCountMap = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllApiCountMapRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllApiCountMapResponse {
+	repeated ApiCountMap apiCountMap = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// this line is used by starport scaffolding # 3

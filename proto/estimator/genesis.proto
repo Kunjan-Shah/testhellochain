@@ -1,0 +1,22 @@
+syntax = "proto3";
+package testhellochain.estimator;
+
+import "gogoproto/gogo.proto";
+import "estimator/params.proto";
+import "estimator/api_hits.proto";
+import "estimator/api_data.proto";
+import "estimator/api_count_map.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "testhellochain/x/estimator/types";
+
+// GenesisState defines the estimator module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  repeated ApiHits apiHitsList = 2 [(gogoproto.nullable) = false];
+  uint64 apiHitsCount = 3;
+  repeated ApiData apiDataList = 4 [(gogoproto.nullable) = false];
+  uint64 apiDataCount = 5;
+  repeated ApiCountMap apiCountMapList = 6 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}

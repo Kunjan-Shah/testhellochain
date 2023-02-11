@@ -1,0 +1,14 @@
+syntax = "proto3";
+package testhellochain.estimator;
+
+option go_package = "testhellochain/x/estimator/types";
+
+message ApiData {
+  uint64 id = 1;
+  string creator = 2; 
+  uint64 start = 3; 
+  uint64 end = 4; 
+  uint64 time = 5; 
+  uint64 distance = 6; 
+  
+}

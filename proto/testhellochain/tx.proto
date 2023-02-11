@@ -1,0 +1,24 @@
+syntax = "proto3";
+package testhellochain.testhellochain;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "testhellochain/x/testhellochain/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc CreateVenue(MsgCreateVenue) returns (MsgCreateVenueResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateVenue {
+  string creator = 1;
+  string category = 2;
+  string name = 3;
+}
+
+message MsgCreateVenueResponse {
+  uint64 id = 1;
+}
+
+// this line is used by starport scaffolding # proto/tx/message

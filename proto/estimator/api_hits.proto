@@ -1,0 +1,9 @@
+syntax = "proto3";
+package testhellochain.estimator;
+
+option go_package = "testhellochain/x/estimator/types";
+
+message ApiHits {
+  uint64 id = 1;
+  string creator = 2;
+}

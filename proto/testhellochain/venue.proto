@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package testhellochain.testhellochain;
+
+option go_package = "testhellochain/x/testhellochain/types";
+
+message Venue {
+  string creator = 1;
+  uint64 id = 2;
+  string category = 3; 
+  string name = 4; 
+}

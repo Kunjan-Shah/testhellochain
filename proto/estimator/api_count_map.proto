@@ -1,0 +1,11 @@
+syntax = "proto3";
+package testhellochain.estimator;
+
+option go_package = "testhellochain/x/estimator/types";
+
+message ApiCountMap {
+  string creator = 1; 
+  uint64 count = 2; 
+  
+}
+

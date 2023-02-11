@@ -1,0 +1,25 @@
+syntax = "proto3";
+package testhellochain.estimator;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "testhellochain/x/estimator/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc Estimate(MsgEstimate) returns (MsgEstimateResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgEstimate {
+  string creator = 1;
+  uint64 start = 2;
+  uint64 end = 3;
+}
+
+message MsgEstimateResponse {
+   uint64 distance = 1;
+   uint64 time = 2;
+}
+
+// this line is used by starport scaffolding # proto/tx/message
